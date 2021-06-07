@@ -57,7 +57,7 @@ app.get('/weather', (req, res) => {
             })
         }
         
-        forecast(lat, long,(error, {weatherDesc, temperature, feelslike}) => {
+        forecast(lat, long,(error, {weatherDesc, temperature, feelslike, humidity}) => {
             if (err) {
                 return res.send({
                     error: err
@@ -68,11 +68,8 @@ app.get('/weather', (req, res) => {
             // console.log(`${weatherDesc}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees`)
             
             res.send({
-                forecast: `${weatherDesc}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees`,
-                location,
-                weatherDesc,
-                temperature,
-                feelslike
+                forecast: `${weatherDesc}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees. Humidity is ${humidity}%.`,
+                location
             })
         })
     })

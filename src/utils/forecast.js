@@ -13,7 +13,8 @@ const forecast = (lat, long, callback) => {
             callback(undefined, {
                 weatherDesc: currentData.weather_descriptions[0],
                 temperature: currentData.temperature,
-                feelslike: currentData.feelslike
+                feelslike: currentData.feelslike,
+                humidity: currentData.humidity
             })
         }
     })
