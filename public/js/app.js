@@ -2,12 +2,12 @@ console.log('Client Side JS')
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input[type="text"]')
+
 const weatherLocation = document.querySelector('.weather-location')
 const weatherDesc = document.querySelector('.weather-desc')
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    console.log("testing")
 
     const location = search.value
 
@@ -19,8 +19,6 @@ weatherForm.addEventListener('submit', (e) => {
             if (data.error){
                 weatherLocation.textContent = data.error
             } else {
-                console.log(data.location)
-                console.log(data.forecast)
                 weatherLocation.textContent = data.location
                 weatherDesc.textContent = data.forecast
             }
