@@ -58,14 +58,11 @@ app.get('/weather', (req, res) => {
         }
         
         forecast(lat, long,(error, {weatherDesc, temperature, feelslike, humidity}) => {
-            if (err) {
+            if (error) {
                 return res.send({
-                    error: err
+                    error
                 })
             }
-            
-            // console.log(location)
-            // console.log(`${weatherDesc}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees`)
             
             res.send({
                 forecast: `${weatherDesc}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees. Humidity is ${humidity}%.`,
@@ -74,19 +71,6 @@ app.get('/weather', (req, res) => {
         })
     })
 
-})
-
-app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error: 'You must provide a search term'
-        })
-    }
-
-    console.log(req.query.search)
-    res.send({
-        products: [] 
-    })
 })
 
 app.get('/help/*', (req, res) => {
